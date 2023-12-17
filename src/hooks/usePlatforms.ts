@@ -6,7 +6,7 @@ import { CACHED_KEY_GENRES } from '../constants';
 //import { FetchResponse } from './useData';
 
 
-interface Platform {
+export interface Platform {
   id: number;
   name: string;
   slug: string;
