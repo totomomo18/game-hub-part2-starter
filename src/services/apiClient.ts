@@ -1,0 +1,39 @@
+import axios from "axios";
+import { API_BASE_URL } from "../constants";
+
+const axiosInstance=axios.create({
+    baseURL: API_BASE_URL,
+    
+    params:{
+        key:'210dbb12c804424d8b17ea6d6473fd04'
+    }
+    
+  })
+
+  export interface FetchResponse<T> {
+    count: number;
+    results: T[];
+  }
+
+
+  class APIClient<T> {
+    
+    endpoint:string
+
+    constructor(endpoint: string) {
+        this.endpoint = endpoint;
+    }
+
+    getAll= () => { 
+        return axiosInstance
+        .get<FetchResponse<T>>(this.endpoint)
+        .then((res) => res.data.results);
+    }
+    
+    post = (data:T) => {
+        return axiosInstance.post<T>(this.endpoint, data)
+        .then((res) => res.data);
+    }
+
+  }
+  export default APIClient;

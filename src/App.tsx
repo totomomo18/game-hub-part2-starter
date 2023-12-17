@@ -7,7 +7,8 @@ import NavBar from "./components/NavBar";
 import PlatformSelector from "./components/PlatformSelector";
 import SortSelector from "./components/SortSelector";
 import { Platform } from "./hooks/useGames";
-import { Genre } from "./hooks/useGenres";
+import { Genre } from "./services/genresService";
+
 
 
 export interface GameQuery { 
@@ -20,6 +21,7 @@ export interface GameQuery {
 function App() {
   const [gameQuery, setGameQuery] = useState<GameQuery>({} as GameQuery);
   
+  if(false) return  <GenreList selectedGenre={gameQuery.genre} onSelectGenre={(genre) => setGameQuery({ ...gameQuery, genre})} />
   return (
     <Grid
       templateAreas={{
